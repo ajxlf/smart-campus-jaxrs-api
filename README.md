@@ -89,7 +89,7 @@ curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/SCI-101
 ```
 
 ## 🎓 Academic Context
-Built as a coursework project for 5COSC022W - Client-Server Architectures, at the University of Westminster.
+Built as a coursework project for **5COSC022W - Client-Server Architectures**, at the University of Westminster.
 
 ---
 
