@@ -87,3 +87,12 @@ curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/sensors/TEMP-001
 ```bash
 curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/SCI-101
 ```
+
+## 🎓 Academic Context
+Built as a coursework project for 5COSC022W - Client-Server Architectures, at the University of Westminster.
+
+---
+
+## 📄 Licence
+
+This project is for portfolio and educational purposes. Not licensed for redistribution.
