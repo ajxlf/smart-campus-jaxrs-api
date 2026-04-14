@@ -3,7 +3,7 @@
 ## Overview
 This project is a RESTful API built using JAX-RS (Jersey) and Maven, developed as part of the 5COSC022W Client-Server Architectures module at the University of Westminster. It simulates a backend system for the university's "Smart Campus" initiative, providing endpoints to manage Rooms and the Sensors deployed within them, as well as historical Sensor Readings.
 
-All data is stored in-memory using `HashMap` and `ArrayList` structures. No database is used, in-line with the briefs instructions.
+All data is stored in-memory using `HashMap` and `ArrayList` structures. No database is used, in line with the brief's instructions.
 
 ## API Design
 
@@ -16,17 +16,17 @@ All data is stored in-memory using `HashMap` and `ArrayList` structures. No data
 | `/api/v1/rooms/{roomId}` | DELETE | Delete a room (blocked if sensors are still assigned) |
 | `/api/v1/sensors` | GET | Retrieve all sensors, with optional `?type=` filter |
 | `/api/v1/sensors` | POST | Register a new sensor (roomId must exist) |
-| `/api/v1/sensors/{sensorId}` | DELETE | Delete a sensor by ID |
 | `/api/v1/sensors/{sensorId}/readings` | GET | Retrieve all readings for a sensor |
 | `/api/v1/sensors/{sensorId}/readings` | POST | Submit a new reading for a sensor |
 
-### Resource Hierarchy
-Rooms are the top-level resource. Each Room can contain multiple Sensors identified by ID. Each Sensor maintains a list of historical SensorReadings. Posting a new reading also updates the `currentValue` field on the parent Sensor.
+## Resource Hierarchy
+Rooms are the top-level resource. Each Room can contain multiple Sensors identified by ID. Each Sensor maintains a list of historical `SensorReading` objects. Posting a new reading also updates the `currentValue` field on the parent `Sensor` to keep the latest value in sync.
 
-### Error Handling
+## Error Handling
 The API uses custom exception mappers to return structured JSON error responses for all failure scenarios:
+
 - `409 Conflict` — attempting to delete a room that still has sensors
-- `422 Unprocessable Entity` — registering a sensor with a roomId that does not exist
+- `422 Unprocessable Entity` — registering a sensor with a `roomId` that does not exist
 - `403 Forbidden` — posting a reading to a sensor with status `MAINTENANCE`
 - `500 Internal Server Error` — catch-all for any unexpected runtime errors
 
@@ -38,64 +38,54 @@ All requests and responses are logged via a JAX-RS filter using `java.util.loggi
 2. Right-click the project → **Clean and Build**.
 3. Right-click the project → **Run** (deploys to the embedded GlassFish/Tomcat server).
 4. The API will be available at:
+
    - `http://localhost:8080/JAX-RS_Coursework/api/v1`
 
 ## Sample curl Commands
 
+The examples below are written for **Windows Command Prompt**.
+
 **Get API discovery info:**
-```bash
+```cmd
 curl -X GET http://localhost:8080/JAX-RS_Coursework/api/v1
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/ea4a9708-21df-4365-9fa1-e06bc8962b21" />
 
 **Get all rooms:**
-```bash
+```cmd
 curl -X GET http://localhost:8080/JAX-RS_Coursework/api/v1/rooms
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/f5f11a57-f5e3-44fe-8219-832d75b2861d" />
 
 **Create a room:**
-```bash
+```cmd
 curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/rooms -H "Content-Type: application/json" -d "{\"id\":\"SCI-101\",\"name\":\"Science Lab\",\"capacity\":30,\"sensorIds\":[]}"
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/b500d2b6-9c9a-4660-9b3c-11de0602610f" />
 
 **Register a sensor:**
-```bash
+```cmd
 curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors -H "Content-Type: application/json" -d "{\"id\":\"TEMP-001\",\"type\":\"Temperature\",\"status\":\"ACTIVE\",\"currentValue\":21.5,\"roomId\":\"SCI-101\"}"
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/d38c3bf7-8381-45e2-a2c7-efaba439c1c8" />
 
 **Get sensors filtered by type:**
-```bash
+```cmd
 curl -X GET "http://localhost:8080/JAX-RS_Coursework/api/v1/sensors?type=Temperature"
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/88c04647-c5d5-421d-b61c-8bf232f101a9" />
 
 **Post a sensor reading:**
-```bash
-curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors/TEMP-001/readings \
-  -H "Content-Type: application/json" \
-  -d "{\"id\":\"R-001\",\"timestamp\":1712870000000,\"value\":22.8}"
+```cmd
+curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors/TEMP-001/readings -H "Content-Type: application/json" -d "{\"id\":\"R-001\",\"timestamp\":1712870000000,\"value\":22.8}"
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/59a1bdb9-0c9e-43a4-b493-9a163e9df4f5" />
 
 **Delete a room (must have no sensors assigned):**
-```bash
+```cmd
 curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/ENG-201
 ```
-<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/5d3ede30-26ae-4774-ac50-19b3b133f3ad" />
-
 
 ## Conceptual Report
 
-<a href="JAX-RS Conceptual Report.pdf" class="image fit"></a>
+[Download JAX-RS Conceptual Report PDF](./JAX-RS%20Conceptual%20Report.pdf)
 
-## 🎓 Academic Context
-Built as a coursework project for **5COSC022W - Client-Server Architectures**, at the University of Westminster.
+## Academic Context
+Built as a coursework project for **5COSC022W – Client-Server Architectures** at the University of Westminster.
 
----
-
-## 📄 Licence
-
+## Licence
 This project is for portfolio and educational purposes. Not licensed for redistribution.
