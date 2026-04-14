@@ -84,7 +84,12 @@ curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors/TEMP-001/rea
 ```bash
 curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/ENG-201
 ```
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/25bc59bc-0f37-40e5-83d4-12b09532540b" />
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/5d3ede30-26ae-4774-ac50-19b3b133f3ad" />
+
+
+## Conceptual Report
+
+<a href="/pdfs/JAX-RS Conceptual Report.pdf" class="image fit"></a>
 
 ## 🎓 Academic Context
 Built as a coursework project for **5COSC022W - Client-Server Architectures**, at the University of Westminster.
