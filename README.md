@@ -89,7 +89,7 @@ curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/ENG-201
 
 ## Conceptual Report
 
-<a href="/pdfs/JAX-RS Conceptual Report.pdf" class="image fit"></a>
+<a href="JAX-RS Conceptual Report.pdf" class="image fit"></a>
 
 ## 🎓 Academic Context
 Built as a coursework project for **5COSC022W - Client-Server Architectures**, at the University of Westminster.
