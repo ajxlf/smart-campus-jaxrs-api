@@ -46,30 +46,31 @@ All requests and responses are logged via a JAX-RS filter using `java.util.loggi
 ```bash
 curl -X GET http://localhost:8080/JAX-RS_Coursework/api/v1
 ```
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/ea4a9708-21df-4365-9fa1-e06bc8962b21" />
 
 **Get all rooms:**
 ```bash
 curl -X GET http://localhost:8080/JAX-RS_Coursework/api/v1/rooms
 ```
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/f5f11a57-f5e3-44fe-8219-832d75b2861d" />
 
 **Create a room:**
 ```bash
-curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/rooms \
-  -H "Content-Type: application/json" \
-  -d "{\"id\":\"SCI-101\",\"name\":\"Science Lab\",\"capacity\":30,\"sensorIds\":[]}"
+curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/rooms -H "Content-Type: application/json" -d "{\"id\":\"SCI-101\",\"name\":\"Science Lab\",\"capacity\":30,\"sensorIds\":[]}"
 ```
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/b500d2b6-9c9a-4660-9b3c-11de0602610f" />
 
 **Register a sensor:**
 ```bash
-curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors \
-  -H "Content-Type: application/json" \
-  -d "{\"id\":\"TEMP-001\",\"type\":\"Temperature\",\"status\":\"ACTIVE\",\"currentValue\":21.5,\"roomId\":\"SCI-101\"}"
+curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors -H "Content-Type: application/json" -d "{\"id\":\"TEMP-001\",\"type\":\"Temperature\",\"status\":\"ACTIVE\",\"currentValue\":21.5,\"roomId\":\"SCI-101\"}"
 ```
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/d38c3bf7-8381-45e2-a2c7-efaba439c1c8" />
 
 **Get sensors filtered by type:**
 ```bash
 curl -X GET "http://localhost:8080/JAX-RS_Coursework/api/v1/sensors?type=Temperature"
 ```
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/88c04647-c5d5-421d-b61c-8bf232f101a9" />
 
 **Post a sensor reading:**
 ```bash
@@ -77,16 +78,13 @@ curl -X POST http://localhost:8080/JAX-RS_Coursework/api/v1/sensors/TEMP-001/rea
   -H "Content-Type: application/json" \
   -d "{\"id\":\"R-001\",\"timestamp\":1712870000000,\"value\":22.8}"
 ```
-
-**Delete a sensor:**
-```bash
-curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/sensors/TEMP-001
-```
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/59a1bdb9-0c9e-43a4-b493-9a163e9df4f5" />
 
 **Delete a room (must have no sensors assigned):**
 ```bash
-curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/SCI-101
+curl -X DELETE http://localhost:8080/JAX-RS_Coursework/api/v1/rooms/ENG-201
 ```
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/25bc59bc-0f37-40e5-83d4-12b09532540b" />
 
 ## 🎓 Academic Context
 Built as a coursework project for **5COSC022W - Client-Server Architectures**, at the University of Westminster.
