@@ -55,13 +55,15 @@ From the repository root, run:
 mvn --batch-mode --no-transfer-progress clean package
 ```
 
+The command also runs the automated unit tests before packaging. Current tests exercise sensor filtering, sensor creation and room linkage, readings updates, maintenance-mode rejection, and missing-sensor responses.
+
 The generated archive is:
 
 ```text
 target/JAX-RS_Coursework-1.0-SNAPSHOT.war
 ```
 
-This command verifies compilation and packaging; the project does not currently include a dedicated automated test suite. Deployment and live endpoint behaviour should still be verified in a compatible Java EE 8 / Jersey 2 runtime.
+This command verifies the unit tests, compilation and packaging. Deployment and live HTTP endpoint behaviour should still be verified in a compatible Java EE 8 / Jersey 2 runtime.
 
 ## Sample curl Commands
 
