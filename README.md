@@ -41,6 +41,28 @@ All requests and responses are logged via a JAX-RS filter using `java.util.loggi
 
    - `http://localhost:8080/JAX-RS_Coursework/api/v1`
 
+## Build the WAR from the command line
+
+The project uses Maven and packages a deployable WAR archive. You can compile and package it without opening the IDE:
+
+Requirements:
+- JDK 17 (the source and target bytecode level remain Java 8 in the current `pom.xml`)
+- Maven 3.8 or later
+
+From the repository root, run:
+
+```bash
+mvn --batch-mode --no-transfer-progress clean package
+```
+
+The generated archive is:
+
+```text
+target/JAX-RS_Coursework-1.0-SNAPSHOT.war
+```
+
+This command verifies compilation and packaging; the project does not currently include a dedicated automated test suite. Deployment and live endpoint behaviour should still be verified in a compatible Java EE 8 / Jersey 2 runtime.
+
 ## Sample curl Commands
 
 The examples below are written for **Windows Command Prompt**.
